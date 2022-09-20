@@ -1,6 +1,6 @@
 language: node_js
 node_js:
-  - 12
+  - 13
 
 services:
   - docker
@@ -9,13 +9,14 @@ install:
   - echo 'no installation required'
 
 before_script:
+  - echo "no tests"
+
+script:
   - docker --version
   - docker build -t udagram-api-feed ./udagram-api-feed
   - docker build -t udagram-api-user ./udagram-api-user
   - docker build -t udagram-frontend ./udagram-frontend
   - docker build -t udagram-reverseproxy ./udagram-reverseproxy
-
-script:
   - docker tag udagram-api-feed 06122019/udagram-api-feed
   - docker tag udagram-api-user 06122019/udagram-api-user
   - docker tag udagram-frontend 06122019/udagram-frontend:local
